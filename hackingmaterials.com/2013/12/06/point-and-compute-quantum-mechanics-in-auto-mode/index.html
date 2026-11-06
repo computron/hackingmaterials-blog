@@ -13,164 +13,15 @@
 	<meta name="viewport" content="width=device-width">
 	<title>Point-and-Compute: Quantum Mechanics in &#8220;Auto&#8221; Mode | HACKING MATERIALS</title>
 	<link rel="profile" href="https://gmpg.org/xfn/11">
-	<link rel="pingback" href="https://hackingmaterials.com/xmlrpc.php">
+	
 	<!--[if lt IE 9]>
-	<script src="https://s2.wp.com/wp-content/themes/pub/twentyfourteen/js/html5.js?m=1394055187i&amp;ver=3.7.0"></script>
+	
 	<![endif]-->
-	<script type="text/javascript">
-  WebFontConfig = {"google":{"families":["Open+Sans:r,i,b,bi:latin,latin-ext"]},"api_url":"https:\/\/fonts-api.wp.com\/css"};
-  (function() {
-    var wf = document.createElement('script');
-    wf.src = '/wp-content/plugins/custom-fonts/js/webfont.js';
-    wf.type = 'text/javascript';
-    wf.async = 'true';
-    var s = document.getElementsByTagName('script')[0];
-    s.parentNode.insertBefore(wf, s);
-	})();
-</script><style id="jetpack-custom-fonts-css">.wf-active body{font-family:"Open Sans",sans-serif}.wf-active body, .wf-active input, .wf-active select, .wf-active textarea{font-family:"Open Sans",sans-serif}.wf-active #page .entry-content div.sharedaddy h3, .wf-active #page .entry-summary div.sharedaddy h3, .wf-active #page .entry-content h3.sd-title, .wf-active #page .entry-summary h3.sd-title, .wf-active #primary div.sharedaddy .jp-relatedposts-headline em, .wf-active .pd-rating{font-family:"Open Sans",sans-serif}</style>
+	<style id="jetpack-custom-fonts-css">.wf-active body{font-family:"Open Sans",sans-serif}.wf-active body, .wf-active input, .wf-active select, .wf-active textarea{font-family:"Open Sans",sans-serif}.wf-active #page .entry-content div.sharedaddy h3, .wf-active #page .entry-summary div.sharedaddy h3, .wf-active #page .entry-content h3.sd-title, .wf-active #page .entry-summary h3.sd-title, .wf-active #primary div.sharedaddy .jp-relatedposts-headline em, .wf-active .pd-rating{font-family:"Open Sans",sans-serif}</style>
 <meta name='robots' content='max-image-preview:large' />
 
 <!-- Async WordPress.com Remote Login -->
-<script id="wpcom_remote_login_js">
-var wpcom_remote_login_extra_auth = '';
-function wpcom_remote_login_remove_dom_node_id( element_id ) {
-	var dom_node = document.getElementById( element_id );
-	if ( dom_node ) { dom_node.parentNode.removeChild( dom_node ); }
-}
-function wpcom_remote_login_remove_dom_node_classes( class_name ) {
-	var dom_nodes = document.querySelectorAll( '.' + class_name );
-	for ( var i = 0; i < dom_nodes.length; i++ ) {
-		dom_nodes[ i ].parentNode.removeChild( dom_nodes[ i ] );
-	}
-}
-function wpcom_remote_login_final_cleanup() {
-	wpcom_remote_login_remove_dom_node_classes( "wpcom_remote_login_msg" );
-	wpcom_remote_login_remove_dom_node_id( "wpcom_remote_login_key" );
-	wpcom_remote_login_remove_dom_node_id( "wpcom_remote_login_validate" );
-	wpcom_remote_login_remove_dom_node_id( "wpcom_remote_login_js" );
-	wpcom_remote_login_remove_dom_node_id( "wpcom_request_access_iframe" );
-	wpcom_remote_login_remove_dom_node_id( "wpcom_request_access_styles" );
-}
 
-// Watch for messages back from the remote login
-window.addEventListener( "message", function( e ) {
-	if ( e.origin === "https://r-login.wordpress.com" ) {
-		var data = {};
-		try {
-			data = JSON.parse( e.data );
-		} catch( e ) {
-			wpcom_remote_login_final_cleanup();
-			return;
-		}
-
-		if ( data.msg === 'LOGIN' ) {
-			// Clean up the login check iframe
-			wpcom_remote_login_remove_dom_node_id( "wpcom_remote_login_key" );
-
-			var id_regex = new RegExp( /^[0-9]+$/ );
-			var token_regex = new RegExp( /^.*|.*|.*$/ );
-			if (
-				token_regex.test( data.token )
-				&& id_regex.test( data.wpcomid )
-			) {
-				// We have everything we need to ask for a login
-				var script = document.createElement( "script" );
-				script.setAttribute( "id", "wpcom_remote_login_validate" );
-				script.src = '/remote-login.php?wpcom_remote_login=validate'
-					+ '&wpcomid=' + data.wpcomid
-					+ '&token=' + encodeURIComponent( data.token )
-					+ '&host=' + window.location.protocol
-					+ '//' + window.location.hostname
-					+ '&postid=345'
-					+ '&is_singular=1';
-				document.body.appendChild( script );
-			}
-
-			return;
-		}
-
-		// Safari ITP, not logged in, so redirect
-		if ( data.msg === 'LOGIN-REDIRECT' ) {
-			window.location = 'https://wordpress.com/log-in?redirect_to=' + window.location.href;
-			return;
-		}
-
-		// Safari ITP, storage access failed, remove the request
-		if ( data.msg === 'LOGIN-REMOVE' ) {
-			var css_zap = 'html { -webkit-transition: margin-top 1s; transition: margin-top 1s; } /* 9001 */ html { margin-top: 0 !important; } * html body { margin-top: 0 !important; } @media screen and ( max-width: 782px ) { html { margin-top: 0 !important; } * html body { margin-top: 0 !important; } }';
-			var style_zap = document.createElement( 'style' );
-			style_zap.type = 'text/css';
-			style_zap.appendChild( document.createTextNode( css_zap ) );
-			document.body.appendChild( style_zap );
-
-			var e = document.getElementById( 'wpcom_request_access_iframe' );
-			e.parentNode.removeChild( e );
-
-			document.cookie = 'wordpress_com_login_access=denied; path=/; max-age=31536000';
-
-			return;
-		}
-
-		// Safari ITP
-		if ( data.msg === 'REQUEST_ACCESS' ) {
-			console.log( 'request access: safari' );
-
-			// Check ITP iframe enable/disable knob
-			if ( wpcom_remote_login_extra_auth !== 'safari_itp_iframe' ) {
-				return;
-			}
-
-			// If we are in a "private window" there is no ITP.
-			var private_window = false;
-			try {
-				var opendb = window.openDatabase( null, null, null, null );
-			} catch( e ) {
-				private_window = true;
-			}
-
-			if ( private_window ) {
-				console.log( 'private window' );
-				return;
-			}
-
-			var iframe = document.createElement( 'iframe' );
-			iframe.id = 'wpcom_request_access_iframe';
-			iframe.setAttribute( 'scrolling', 'no' );
-			iframe.setAttribute( 'sandbox', 'allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-top-navigation-by-user-activation' );
-			iframe.src = 'https://r-login.wordpress.com/remote-login.php?wpcom_remote_login=request_access&origin=' + encodeURIComponent( data.origin ) + '&wpcomid=' + encodeURIComponent( data.wpcomid );
-
-			var css = 'html { -webkit-transition: margin-top 1s; transition: margin-top 1s; } /* 9001 */ html { margin-top: 46px !important; } * html body { margin-top: 46px !important; } @media screen and ( max-width: 660px ) { html { margin-top: 71px !important; } * html body { margin-top: 71px !important; } #wpcom_request_access_iframe { display: block; height: 71px !important; } } #wpcom_request_access_iframe { border: 0px; height: 46px; position: fixed; top: 0; left: 0; width: 100%; min-width: 100%; z-index: 99999; background: #23282d; } ';
-
-			var style = document.createElement( 'style' );
-			style.type = 'text/css';
-			style.id = 'wpcom_request_access_styles';
-			style.appendChild( document.createTextNode( css ) );
-			document.body.appendChild( style );
-
-			document.body.appendChild( iframe );
-		}
-
-		if ( data.msg === 'DONE' ) {
-			wpcom_remote_login_final_cleanup();
-		}
-	}
-}, false );
-
-// Inject the remote login iframe after the page has had a chance to load
-// more critical resources
-window.addEventListener( "DOMContentLoaded", function( e ) {
-	var iframe = document.createElement( "iframe" );
-	iframe.style.display = "none";
-	iframe.setAttribute( "scrolling", "no" );
-	iframe.setAttribute( "id", "wpcom_remote_login_key" );
-	iframe.src = "https://r-login.wordpress.com/remote-login.php"
-		+ "?wpcom_remote_login=key"
-		+ "&origin=aHR0cHM6Ly9oYWNraW5nbWF0ZXJpYWxzLmNvbQ%3D%3D"
-		+ "&wpcomid=36610064"
-		+ "&time=" + Math.floor( Date.now() / 1000 );
-	document.body.appendChild( iframe );
-}, false );
-</script>
 <link rel='dns-prefetch' href='../../../../../s1.wp.com/index.html' />
 <link rel='dns-prefetch' href='../../../../../s2.wp.com/index.html' />
 <link rel='dns-prefetch' href='https://fonts-api.wp.com/' />
@@ -180,21 +31,7 @@ window.addEventListener( "DOMContentLoaded", function( e ) {
 <link rel="alternate" type="application/rss+xml" title="HACKING MATERIALS &raquo; Feed" href="../../../../feed/index.html" />
 <link rel="alternate" type="application/rss+xml" title="HACKING MATERIALS &raquo; Comments Feed" href="../../../../comments/feed/index.html" />
 <link rel="alternate" type="application/rss+xml" title="HACKING MATERIALS &raquo; Point-and-Compute: Quantum Mechanics in &#8220;Auto&#8221; Mode Comments Feed" href="feed/index.html" />
-	<script type="text/javascript">
-		/* <![CDATA[ */
-		function addLoadEvent(func) {
-			var oldonload = window.onload;
-			if (typeof window.onload != 'function') {
-				window.onload = func;
-			} else {
-				window.onload = function () {
-					oldonload();
-					func();
-				}
-			}
-		}
-		/* ]]> */
-	</script>
+	
 	<style id="wp-img-auto-sizes-contain-inline-css">
 img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 /*# sourceURL=wp-img-auto-sizes-contain-inline-css */
@@ -253,24 +90,12 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 /*# sourceURL=jetpack-global-styles-frontend-style-inline-css */
 </style>
 <link crossorigin='anonymous' rel='stylesheet' id='all-css-22-1' href='../../../../_static/index.html@%253F-eJyNjcsKAjEMRX%252FImhmUURfip0inLW3GNCmmQfx7H7gRN+7ugcs5cGsuCPfEHaq5RpaRFZbUmw+XD4MaQ5VolBS0+GuKPsb7eyLndVBdwd+iM3KA2ZAiqAT05Eiy6Bf8KHtJ9RkvW8gks6fX4VSP426%252FmQ7TMA7LA38FSqA=&amp;cssminify=yes.css' type='text/css' media='all' />
-<script id="jetpack_related-posts-js-extra">
-var related_posts_js_options = {"post_heading":"h4"};
-//# sourceURL=jetpack_related-posts-js-extra
-</script>
-<script id="wpcom-actionbar-placeholder-js-extra">
-var actionbardata = {"siteID":"36610064","postID":"345","siteURL":"https://hackingmaterials.com","xhrURL":"https://hackingmaterials.com/wp-admin/admin-ajax.php","nonce":"9884d60d7b","isLoggedIn":"","statusMessage":"","statusSubscribed":"","subsEmailDefault":"instantly","proxyScriptUrl":"https://s0.wp.com/wp-content/js/wpcom-proxy-request.js?m=1513050504i&amp;ver=20211021","shortlink":"https://wp.me/p2tBWU-5z","i18n":{"followedText":"New posts from this site will now appear in your \u003Ca href=\"https://wordpress.com/reader\"\u003EReader\u003C/a\u003E","foldBar":"Collapse this bar","unfoldBar":"Expand this bar","shortLinkCopied":"Copied to clipboard."}};
-//# sourceURL=wpcom-actionbar-placeholder-js-extra
-</script>
-<script id="jetpack-mu-wpcom-settings-js-before">
-var JETPACK_MU_WPCOM_SETTINGS = {"assetsUrl":"https://s1.wp.com/wp-content/mu-plugins/jetpack-mu-wpcom-plugin/sun/jetpack_vendor/automattic/jetpack-mu-wpcom/src/build/"};
-//# sourceURL=jetpack-mu-wpcom-settings-js-before
-</script>
-<script crossorigin='anonymous' type='text/javascript'  src='../../../../_static/index.html@%253F-eJx1j1EKwjAQRC%252FkuiiFth%252FiUSRNQkhMNjGbWHt7W6xSQb+GYYY3DI4JZKSiqWCokHw1lhidLknI6+qRK+HFksShWq8way+KVpAiF%252F52+2Bp73iHG66bO75AyvExvbMZ5qvSvITuVnWeVtkC%252FpYgWJPn0V9rg4%252Fm82OMWQnFIL1gfoFkSHg%252FLgIUCYxKeUacw+nQdl3bN33XuCc+O'></script>
-<script id="rlt-proxy-js-after">
-	rltInitialize( {"token":null,"iframeOrigins":["https:\/\/widgets.wp.com"]} );
-//# sourceURL=rlt-proxy-js-after
-</script>
-<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://hackingmaterials.wordpress.com/xmlrpc.php?rsd" />
+
+
+
+
+
+
 <meta name="generator" content="WordPress.com" />
 <link rel="canonical" href="index.html" />
 <link rel='shortlink' href='https://wp.me/p2tBWU-5z' />
@@ -297,10 +122,10 @@ var JETPACK_MU_WPCOM_SETTINGS = {"assetsUrl":"https://s1.wp.com/wp-content/mu-pl
 <link rel="shortcut icon" type="image/x-icon" href="https://secure.gravatar.com/blavatar/5a3d720bebb85c86422baac5a346ea92be097c5b0488968f14aab63cf293d974?s=32" />
 <link rel="icon" type="image/x-icon" href="https://secure.gravatar.com/blavatar/5a3d720bebb85c86422baac5a346ea92be097c5b0488968f14aab63cf293d974?s=32" />
 <link rel="apple-touch-icon" href="https://secure.gravatar.com/blavatar/5a3d720bebb85c86422baac5a346ea92be097c5b0488968f14aab63cf293d974?s=114" />
-<link rel='openid.server' href='../../../../index.html@openidserver=1.html' />
-<link rel='openid.delegate' href='../../../../index.html' />
-<link rel="search" type="application/opensearchdescription+xml" href="../../../../osd.xml" title="HACKING MATERIALS" />
-<link rel="search" type="application/opensearchdescription+xml" href="../../../../../s1.wp.com/opensearch.xml" title="WordPress.com" />
+
+
+
+
 <meta name="theme-color" content="#eff0ee" />
 		<style type="text/css">
 			.recentcomments a {
@@ -346,42 +171,9 @@ var JETPACK_MU_WPCOM_SETTINGS = {"assetsUrl":"https://s1.wp.com/wp-content/mu-pl
 <style id="custom-background-css">
 body.custom-background { background-color: #eff0ee; }
 </style>
-<script>
-var wa_client = {}; wa_client.cmd = []; wa_client.config = { 'blog_id': 36610064, 'blog_language': 'en', 'is_wordads': false, 'hosting_type': 0, 'afp_account_id': null, 'afp_host_id': 5038568878849053, 'theme': 'pub/twentyfourteen', '_': { 'title': 'Advertisement', 'privacy_settings': 'Privacy Settings' }, 'formats': [ 'inline', 'belowpost', 'bottom_sticky', 'sidebar_sticky_right', 'sidebar', 'gutenberg_rectangle', 'gutenberg_leaderboard', 'gutenberg_mobile_leaderboard', 'gutenberg_skyscraper' ] };
-</script>
-		<script type="text/javascript">
 
-			window.doNotSellCallback = function() {
-
-				var linkElements = [
-					'a[href="https://wordpress.com/?ref=footer_blog"]',
-					'a[href="https://wordpress.com/?ref=footer_website"]',
-					'a[href="https://wordpress.com/?ref=vertical_footer"]',
-					'a[href^="https://wordpress.com/?ref=footer_segment_"]',
-				].join(',');
-
-				var dnsLink = document.createElement( 'a' );
-				dnsLink.href = 'https://wordpress.com/advertising-program-optout/';
-				dnsLink.classList.add( 'do-not-sell-link' );
-				dnsLink.rel = 'nofollow';
-				dnsLink.style.marginLeft = '0.5em';
-				dnsLink.textContent = 'Do Not Sell or Share My Personal Information';
-
-				var creditLinks = document.querySelectorAll( linkElements );
-
-				if ( 0 === creditLinks.length ) {
-					return false;
-				}
-
-				Array.prototype.forEach.call( creditLinks, function( el ) {
-					el.insertAdjacentElement( 'afterend', dnsLink );
-				});
-
-				return true;
-			};
-
-		</script>
-		<noscript><style>.jetpack-comments{visibility:visible!important}</style></noscript><style type="text/css" id="custom-colors-css">	.site-description {
+		
+		<style type="text/css" id="custom-colors-css">	.site-description {
 		margin-top: 13px;
 	}
 
@@ -780,25 +572,9 @@ button:active,
 			 { color: #000000;}
 </style>
 			<link rel="stylesheet" id="custom-css-css" type="text/css" href="../../../../../s2.wp.com/index.html@custom-css=1&amp;csblog=2tBWU&amp;cscache=6&amp;csrev=43.css" />
-			<script type="text/javascript">
-	window.google_analytics_uacct = "UA-52447-2";
-</script>
+			
 
-<script type="text/javascript">
-	var _gaq = _gaq || [];
-	_gaq.push(['_setAccount', 'UA-52447-2']);
-	_gaq.push(['_gat._anonymizeIp']);
-	_gaq.push(['_setDomainName', 'none']);
-	_gaq.push(['_setAllowLinker', true]);
-	_gaq.push(['_initData']);
-	_gaq.push(['_trackPageview']);
 
-	(function() {
-		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
-	})();
-</script>
 <link crossorigin='anonymous' rel='stylesheet' id='all-css-2-3' href='../../../../_static/index.html@%253F-eJyNjMEKgzAQBX9IfS0NqIfipxRdF4kmm+Bm8fdLwXr2OMMwOHJNSQpLQbQ6B1u8KFYueaTtZKgJPl4IU0i0KfTwmfeGVCvcHsQ0W2AFjXsy5XA1f%252FH7DfH9bPtH51z%252FcusXroE6rg==&amp;cssminify=yes.css' type='text/css' media='all' />
 <style id="jetpack-subscriptions-inline-css">
 #subscribe-email input {
@@ -833,6 +609,15 @@ Provides support for themes that do not bundle this CSS yet.
 /*# sourceURL=/wp-content/mu-plugins/jetpack-plugin/sun/_inc/build/subscriptions/subscriptions.min.css */
 </style>
 
+<style id="archive-cleanup">
+#actionbar, #eu-cookie-law, .widget_eu_cookie_law_widget, .widget_blog_subscription,
+.jetpack_subscription_widget, #search-container, .search-toggle, .menu-toggle,
+#respond, .comment-respond, .comment-reply-link, .reply, .comments-link,
+.sharedaddy, #jp-post-flair, .jp-relatedposts, .jetpack-likes-widget-wrapper,
+#likes-other-gravatars, .jp-carousel-wrap, #wordads-inline-marker, .wpcnt,
+#infinite-footer, #infinite-handle, .infinite-loader { display: none !important; }
+.paging-navigation, .primary-navigation .nav-menu { display: block !important; }
+</style>
 </head>
 
 <body class="wp-singular post-template-default single single-post postid-345 single-format-standard custom-background wp-embed-responsive wp-theme-pubtwentyfourteen customizer-styles-applied masthead-fixed full-width singular jetpack-reblog-enabled custom-colors">
@@ -911,16 +696,7 @@ Provides support for themes that do not bundle this CSS yet.
 [3] For example, corrections have been developed for <a href="http://prb.aps.org/abstract/PRB/v87/i7/e075150" target="_blank">gas to solid phase reactions</a>, <a href="http://prb.aps.org/abstract/PRB/v85/i23/e235438" target="_blank">solution to solid phase reactions</a>, <a href="http://prb.aps.org/abstract/PRB/v85/i11/e115104" target="_blank">metal/element to compound reactions</a>, and <a href="http://prb.aps.org/abstract/PRB/v84/i4/e045115" target="_blank">localized versus delocalized compound reactions</a>.<br />
 [4] It turns out that increasing atom spacing <a title="Electrodes with High Power and High Capacity" href="http://www.sciencemag.org/content/311/5763/977.abstract?sid=6ef6672e-2fd9-4cb3-815f-f2ae1326f723">can make some electrodes charge and discharge faster</a>.</address>
 <div id="atatags-370373-6aee518378d65">
-		<script type="text/javascript">
-			__ATA = window.__ATA || {};
-			__ATA.cmd = window.__ATA.cmd || [];
-			__ATA.cmd.push(function() {
-				__ATA.initVideoSlot('atatags-370373-6aee518378d65', {
-					sectionId: '370373',
-					format: 'inread'
-				});
-			});
-		</script>
+		
 	</div><span id="wordads-inline-marker" style="display: none;"></span><div id="jp-post-flair" class="sharedaddy sd-like-enabled sd-sharing-enabled"><div class="sharedaddy sd-sharing-enabled"><div class="robots-nocontent sd-block sd-social sd-social-icon-text sd-sharing"><h3 class="sd-title">Share this:</h3><div class="sd-content"><ul><li class="share-twitter"><a rel="nofollow noopener noreferrer"
 				data-shared="sharing-twitter-345"
 				class="share-twitter sd-button share-icon"
@@ -1052,11 +828,9 @@ I am thinking on the hours I spent trying to reverse engineer &#8220;computation
 		
 	
 		<div id="respond" class="comment-respond">
-		<h3 id="reply-title" class="comment-reply-title">Add to the discussion! <small><a rel="nofollow" id="cancel-comment-reply-link" href="index.html#respond" style="display:none;">Cancel reply</a></small></h3><form action="https://hackingmaterials.com/wp-comments-post.php" method="post" id="commentform" class="comment-form"><div class="jetpack-comments" data-jetpack-comments="{&quot;postId&quot;:345,&quot;loginUrl&quot;:&quot;https://hackingmaterials.wordpress.com/wp-login.php?redirect_to=https%3A%2F%2Fhackingmaterials.com%2F2013%2F12%2F06%2Fpoint-and-compute-quantum-mechanics-in-auto-mode%2F&quot;,&quot;logoutUrl&quot;:&quot;&quot;,&quot;submit&quot;:{&quot;id&quot;:&quot;submit&quot;,&quot;name&quot;:&quot;submit&quot;,&quot;class&quot;:&quot;submit&quot;,&quot;wrapClass&quot;:&quot;&quot;,&quot;label&quot;:&quot;Comment&quot;},&quot;subscriptions&quot;:[{&quot;name&quot;:&quot;subscribe&quot;,&quot;label&quot;:&quot;Notify me of new comments by email.&quot;,&quot;checked&quot;:false},{&quot;name&quot;:&quot;subscribe_blog&quot;,&quot;label&quot;:&quot;Subscribe to keep up with HACKING MATERIALS.&quot;,&quot;checked&quot;:false}]}"><p class="comment-form-comment"><label for="comment">Comment</label><textarea id="comment" name="comment" rows="4" required></textarea></p><p class="comment-form-author"><label for="author">Name</label><input id="author" name="author" type="text" value="" required /></p><p class="comment-form-email"><label for="email">Email</label><input id="email" name="email" type="email" value="" required /></p><p class="comment-form-url"><label for="url">Website</label><input id="url" name="url" type="text" value="" maxlength="200" /></p><p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Comment" /> </p></div><noscript><style>.jetpack-comments{display:none!important}</style><p>Turn on JavaScript to leave a comment.</p></noscript><input type='hidden' name='comment_post_ID' value='345' id='comment_post_ID' />
+		<h3 id="reply-title" class="comment-reply-title">Add to the discussion! <small><a rel="nofollow" id="cancel-comment-reply-link" href="index.html#respond" style="display:none;">Cancel reply</a></small></h3><form action="https://hackingmaterials.com/wp-comments-post.php" method="post" id="commentform" class="comment-form"><div class="jetpack-comments" data-jetpack-comments="{&quot;postId&quot;:345,&quot;loginUrl&quot;:&quot;https://hackingmaterials.wordpress.com/wp-login.php?redirect_to=https%3A%2F%2Fhackingmaterials.com%2F2013%2F12%2F06%2Fpoint-and-compute-quantum-mechanics-in-auto-mode%2F&quot;,&quot;logoutUrl&quot;:&quot;&quot;,&quot;submit&quot;:{&quot;id&quot;:&quot;submit&quot;,&quot;name&quot;:&quot;submit&quot;,&quot;class&quot;:&quot;submit&quot;,&quot;wrapClass&quot;:&quot;&quot;,&quot;label&quot;:&quot;Comment&quot;},&quot;subscriptions&quot;:[{&quot;name&quot;:&quot;subscribe&quot;,&quot;label&quot;:&quot;Notify me of new comments by email.&quot;,&quot;checked&quot;:false},{&quot;name&quot;:&quot;subscribe_blog&quot;,&quot;label&quot;:&quot;Subscribe to keep up with HACKING MATERIALS.&quot;,&quot;checked&quot;:false}]}"><p class="comment-form-comment"><label for="comment">Comment</label><textarea id="comment" name="comment" rows="4" required></textarea></p><p class="comment-form-author"><label for="author">Name</label><input id="author" name="author" type="text" value="" required /></p><p class="comment-form-email"><label for="email">Email</label><input id="email" name="email" type="email" value="" required /></p><p class="comment-form-url"><label for="url">Website</label><input id="url" name="url" type="text" value="" maxlength="200" /></p><p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Comment" /> </p></div><input type='hidden' name='comment_post_ID' value='345' id='comment_post_ID' />
 <input type='hidden' name='comment_parent' id='comment_parent' value='0' />
-<p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="ed353d59e1" /></p><p style="display: none !important;" class="akismet-fields-container" data-prefix="ak_"><label>&#916;<textarea name="ak_hp_textarea" cols="45" rows="8" maxlength="100"></textarea></label><input type="hidden" id="ak_js_1" name="ak_js" value="132"/><script>
-document.getElementById( "ak_js_1" ).setAttribute( "value", ( new Date() ).getTime() );
-</script>
+<p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="ed353d59e1" /></p><p style="display: none !important;" class="akismet-fields-container" data-prefix="ak_"><label>&#916;<textarea name="ak_hp_textarea" cols="45" rows="8" maxlength="100"></textarea></label><input type="hidden" id="ak_js_1" name="ak_js" value="132"/>
 </p></form>	</div><!-- #respond -->
 	
 </div><!-- #comments -->
@@ -1130,66 +904,12 @@ document.getElementById( "ak_js_1" ).setAttribute( "value", ( new Date() ).getTi
 	</div><!-- #page -->
 
 	<!--  -->
-<script type="speculationrules">
-{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/files/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/pub/twentyfourteen/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
-</script>
-<script id="grofiles-cards-js" src="https://0.gravatar.com/js/hovercards/hovercards.min.js?ver=202645fffb5f6f8dc7a9c7ad08f16ba2e694fddff32cc1793b3fe3b32aaa232a52550e"></script>
-<script id="wpgroho-js-extra">
-var WPGroHo = {"my_hash":""};
-//# sourceURL=wpgroho-js-extra
-</script>
-<script crossorigin='anonymous' type='text/javascript'  src='../../../../wp-content/mu-plugins/gravatar-hovercards/wpgroho.js@m=1610363240i'></script>
 
-	<script>
-		// Initialize and attach hovercards to all gravatars
-		( function() {
-			function init() {
-				if ( typeof Gravatar === 'undefined' ) {
-					return;
-				}
 
-				if ( typeof Gravatar.init !== 'function' ) {
-					return;
-				}
 
-				Gravatar.profile_cb = function ( hash, id ) {
-					WPGroHo.syncProfileData( hash, id );
-				};
 
-				Gravatar.my_hash = WPGroHo.my_hash;
-				Gravatar.init(
-					'body',
-					'#wp-admin-bar-my-account',
-					{
-						i18n: {
-							'Edit your profile →': 'Edit your profile →',
-							'View profile →': 'View profile →',
-							'Contact': 'Contact',
-							'Send money': 'Send money',
-							'Sorry, we are unable to load this Gravatar profile.': 'Sorry, we are unable to load this Gravatar profile.',
-							'Gravatar not found.': 'Gravatar not found.',
-							'Too Many Requests.': 'Too Many Requests.',
-							'Internal Server Error.': 'Internal Server Error.',
-							'Is this you?': 'Is this you?',
-							'Claim your free profile.': 'Claim your free profile.',
-							'Email': 'Email',
-							'Home Phone': 'Home Phone',
-							'Work Phone': 'Work Phone',
-							'Cell Phone': 'Cell Phone',
-							'Contact Form': 'Contact Form',
-							'Calendar': 'Calendar',
-						},
-					}
-				);
-			}
 
-			if ( document.readyState !== 'loading' ) {
-				init();
-			} else {
-				document.addEventListener( 'DOMContentLoaded', init );
-			}
-		} )();
-	</script>
+	
 
 		<div style="display:none">
 	<div class="grofile-hash-map-cdb645430c6d7f2cb9a5ca2ecd507f68">
@@ -1200,179 +920,7 @@ var WPGroHo = {"my_hash":""};
 	</div>
 	</div>
 		<!-- CCPA [start] -->
-		<script type="text/javascript">
-			( function () {
-
-				var setupPrivacy = function() {
-
-					// Minimal Mozilla Cookie library
-					// https://developer.mozilla.org/en-US/docs/Web/API/Document/cookie/Simple_document.cookie_framework
-					var cookieLib = window.cookieLib = {getItem:function(e){return e&&decodeURIComponent(document.cookie.replace(new RegExp("(?:(?:^|.*;)\\s*"+encodeURIComponent(e).replace(/[\-\.\+\*]/g,"\\$&")+"\\s*\\=\\s*([^;]*).*$)|^.*$"),"$1"))||null},setItem:function(e,o,n,t,r,i){if(!e||/^(?:expires|max\-age|path|domain|secure)$/i.test(e))return!1;var c="";if(n)switch(n.constructor){case Number:c=n===1/0?"; expires=Fri, 31 Dec 9999 23:59:59 GMT":"; max-age="+n;break;case String:c="; expires="+n;break;case Date:c="; expires="+n.toUTCString()}return"rootDomain"!==r&&".rootDomain"!==r||(r=(".rootDomain"===r?".":"")+document.location.hostname.split(".").slice(-2).join(".")),document.cookie=encodeURIComponent(e)+"="+encodeURIComponent(o)+c+(r?"; domain="+r:"")+(t?"; path="+t:"")+(i?"; secure":""),!0}};
-
-					// Implement IAB USP API.
-					window.__uspapi = function( command, version, callback ) {
-
-						// Validate callback.
-						if ( typeof callback !== 'function' ) {
-							return;
-						}
-
-						// Validate the given command.
-						if ( command !== 'getUSPData' || version !== 1 ) {
-							callback( null, false );
-							return;
-						}
-
-						// Check for GPC. If set, override any stored cookie.
-						if ( navigator.globalPrivacyControl ) {
-							callback( { version: 1, uspString: '1YYN' }, true );
-							return;
-						}
-
-						// Check for cookie.
-						var consent = cookieLib.getItem( 'usprivacy' );
-
-						// Invalid cookie.
-						if ( null === consent ) {
-							callback( null, false );
-							return;
-						}
-
-						// Everything checks out. Fire the provided callback with the consent data.
-						callback( { version: 1, uspString: consent }, true );
-					};
-
-					// Initialization.
-					document.addEventListener( 'DOMContentLoaded', function() {
-
-						// Internal functions.
-						var setDefaultOptInCookie = function() {
-							var value = '1YNN';
-							var domain = '.wordpress.com' === location.hostname.slice( -14 ) ? '.rootDomain' : location.hostname;
-							cookieLib.setItem( 'usprivacy', value, 365 * 24 * 60 * 60, '/', domain );
-						};
-
-						var setDefaultOptOutCookie = function() {
-							var value = '1YYN';
-							var domain = '.wordpress.com' === location.hostname.slice( -14 ) ? '.rootDomain' : location.hostname;
-							cookieLib.setItem( 'usprivacy', value, 24 * 60 * 60, '/', domain );
-						};
-
-						var setDefaultNotApplicableCookie = function() {
-							var value = '1---';
-							var domain = '.wordpress.com' === location.hostname.slice( -14 ) ? '.rootDomain' : location.hostname;
-							cookieLib.setItem( 'usprivacy', value, 24 * 60 * 60, '/', domain );
-						};
-
-						var setCcpaAppliesCookie = function( applies ) {
-							var domain = '.wordpress.com' === location.hostname.slice( -14 ) ? '.rootDomain' : location.hostname;
-							cookieLib.setItem( 'ccpa_applies', applies, 24 * 60 * 60, '/', domain );
-						}
-
-						var maybeCallDoNotSellCallback = function() {
-							if ( 'function' === typeof window.doNotSellCallback ) {
-								return window.doNotSellCallback();
-							}
-
-							return false;
-						}
-
-						// Look for usprivacy cookie first.
-						var usprivacyCookie = cookieLib.getItem( 'usprivacy' );
-
-						// Found a usprivacy cookie.
-						if ( null !== usprivacyCookie ) {
-
-							// If the cookie indicates that CCPA does not apply, then bail.
-							if ( '1---' === usprivacyCookie ) {
-								return;
-							}
-
-							// CCPA applies, so call our callback to add Do Not Sell link to the page.
-							maybeCallDoNotSellCallback();
-
-							// We're all done, no more processing needed.
-							return;
-						}
-
-						// We don't have a usprivacy cookie, so check to see if we have a CCPA applies cookie.
-						var ccpaCookie = cookieLib.getItem( 'ccpa_applies' );
-
-						// No CCPA applies cookie found, so we'll need to geolocate if this visitor is from California.
-						// This needs to happen client side because we do not have region geo data in our $SERVER headers,
-						// only country data -- therefore we can't vary cache on the region.
-						if ( null === ccpaCookie ) {
-
-							var request = new XMLHttpRequest();
-							request.open( 'GET', 'https://public-api.wordpress.com/geo/', true );
-
-							request.onreadystatechange = function () {
-								if ( 4 === this.readyState ) {
-									if ( 200 === this.status ) {
-
-										// Got a geo response. Parse out the region data.
-										var data = JSON.parse( this.response );
-										var region      = data.region ? data.region.toLowerCase() : '';
-										var ccpa_applies = ['california', 'colorado', 'connecticut', 'delaware', 'indiana', 'iowa', 'montana', 'new jersey', 'oregon', 'tennessee', 'texas', 'utah', 'virginia'].indexOf( region ) > -1;
-										// Set CCPA applies cookie. This keeps us from having to make a geo request too frequently.
-										setCcpaAppliesCookie( ccpa_applies );
-
-										// Check if CCPA applies to set the proper usprivacy cookie.
-										if ( ccpa_applies ) {
-											if ( maybeCallDoNotSellCallback() ) {
-												// Do Not Sell link added, so set default opt-in.
-												setDefaultOptInCookie();
-											} else {
-												// Failed showing Do Not Sell link as required, so default to opt-OUT just to be safe.
-												setDefaultOptOutCookie();
-											}
-										} else {
-											// CCPA does not apply.
-											setDefaultNotApplicableCookie();
-										}
-									} else {
-										// Could not geo, so let's assume for now that CCPA applies to be safe.
-										setCcpaAppliesCookie( true );
-										if ( maybeCallDoNotSellCallback() ) {
-											// Do Not Sell link added, so set default opt-in.
-											setDefaultOptInCookie();
-										} else {
-											// Failed showing Do Not Sell link as required, so default to opt-OUT just to be safe.
-											setDefaultOptOutCookie();
-										}
-									}
-								}
-							};
-
-							// Send the geo request.
-							request.send();
-						} else {
-							// We found a CCPA applies cookie.
-							if ( ccpaCookie === 'true' ) {
-								if ( maybeCallDoNotSellCallback() ) {
-									// Do Not Sell link added, so set default opt-in.
-									setDefaultOptInCookie();
-								} else {
-									// Failed showing Do Not Sell link as required, so default to opt-OUT just to be safe.
-									setDefaultOptOutCookie();
-								}
-							} else {
-								// CCPA does not apply.
-								setDefaultNotApplicableCookie();
-							}
-						}
-					} );
-				};
-
-				// Kickoff initialization.
-				if ( window.defQueue && defQueue.isLOHP && defQueue.isLOHP === 2020 ) {
-					defQueue.items.push( setupPrivacy );
-				} else {
-					setupPrivacy();
-				}
-
-			} )();
-		</script>
+		
 
 		<!-- CCPA [end] -->
 		<div class="widget widget_eu_cookie_law_widget">
@@ -1440,18 +988,7 @@ To find out more, including how to control cookies, see here:
 				</li>
 			</ul>
 		</div>
-		<script>
-window.addEventListener( "DOMContentLoaded", function () {
-				var link = document.createElement( "link" );
-				link.href = "\/wp-content\/mu-plugins\/jetpack-plugin\/sun\/jetpack_vendor\/automattic\/jetpack-newsletter\/src\/..\/build\/action-bar.css?ver=35dd33285eb46dc308dd";
-				link.rel = "stylesheet";
-				document.head.appendChild( link );
-
-				var script = document.createElement( "script" );
-				script.src = "\/wp-content\/mu-plugins\/jetpack-plugin\/sun\/jetpack_vendor\/automattic\/jetpack-newsletter\/src\/..\/build\/action-bar.js?ver=35dd33285eb46dc308dd";
-				document.body.appendChild( script );
-			} );
-</script>
+		
 <link rel="prefetch" href="../../../../wp-content/mu-plugins/jetpack-plugin/sun/_inc/blocks/swiper.js" as="script" />
 		<div id="jp-carousel-loading-overlay" style="display: none;">
 			<div id="jp-carousel-loading-wrapper">
@@ -1612,93 +1149,22 @@ window.addEventListener( "DOMContentLoaded", function () {
 
 		</div>
 		
-	<script type="text/javascript">
-		window.WPCOM_sharing_counts = {"https://hackingmaterials.com/2013/12/06/point-and-compute-quantum-mechanics-in-auto-mode/":345};
-	</script>
+	
 				
-	<script type="text/javascript">
-		(function () {
-			var wpcom_reblog = {
-				source: 'toolbar',
+	
 
-				toggle_reblog_box_flair: function (obj_id, post_id) {
 
-					// Go to site selector. This will redirect to their blog if they only have one.
-					const postEndpoint = `https://wordpress.com/post`;
 
-					// Ideally we would use the permalink here, but fortunately this will be replaced with the 
-					// post permalink in the editor.
-					const originalURL = `${ document.location.href }?page_id=${ post_id }`; 
-					
-					const url =
-						postEndpoint +
-						'?url=' +
-						encodeURIComponent( originalURL ) +
-						'&is_post_share=true' +
-						'&v=5';
 
-					const redirect = function () {
-						if (
-							! window.open( url, '_blank' )
-						) {
-							location.href = url;
-						}
-					};
 
-					if ( /Firefox/.test( navigator.userAgent ) ) {
-						setTimeout( redirect, 0 );
-					} else {
-						redirect();
-					}
-				},
-			};
 
-			window.wpcom_reblog = wpcom_reblog;
-		})();
-	</script>
-<script id="jetpack-carousel-js-extra">
-var jetpackSwiperLibraryPath = {"url":"/wp-content/mu-plugins/jetpack-plugin/sun/_inc/blocks/swiper.js"};
-var jetpackCarouselStrings = {"widths":[370,700,1000,1200,1400,2000],"is_logged_in":"","lang":"en","ajaxurl":"https://hackingmaterials.com/wp-admin/admin-ajax.php","nonce":"68d64dde72","display_exif":"1","display_comments":"1","single_image_gallery":"1","single_image_gallery_media_file":"","background_color":"black","comment":"Comment","post_comment":"Post Comment","write_comment":"Write a Comment...","image_label":"Open image in full-screen.","download_original":"View full size \u003Cspan class=\"photo-size\"\u003E{0}\u003Cspan class=\"photo-size-times\"\u003E\u00d7\u003C/span\u003E{1}\u003C/span\u003E","no_comment_text":"Please be sure to submit some text with your comment.","no_comment_email":"Please provide an email address to comment.","no_comment_author":"Please provide your name to comment.","comment_post_error":"Sorry, but there was an error posting your comment. Please try again later.","comment_approved":"Your comment was approved.","comment_unapproved":"Your comment is in moderation.","camera":"Camera","aperture":"Aperture","shutter_speed":"Shutter Speed","focal_length":"Focal Length","copyright":"Copyright","comment_registration":"0","require_name_email":"1","login_url":"https://hackingmaterials.wordpress.com/wp-login.php?redirect_to=https%3A%2F%2Fhackingmaterials.com%2F2013%2F12%2F06%2Fpoint-and-compute-quantum-mechanics-in-auto-mode%2F","blog_id":"36610064","meta_data":["camera","aperture","shutter_speed","focal_length","copyright"],"loading_comments":"Loading Comments...","stats_query_args":"blog=36610064&v=wpcom&tz=-8&user_id=0&subd=hackingmaterials","is_public":"1"};
-//# sourceURL=jetpack-carousel-js-extra
-</script>
-<script crossorigin='anonymous' type='text/javascript'  src='../../../../_static/index.html@%253F-eJx9jktuwzAMRC9UhUgdtMii6FEKWWIc2RSlimSN3L4qmh+yyJLDeYMHa3WhsCIrjFQmV8mmxAJradFHcYG8CArMPfJK7ud1M8sL3GHZblCKE6oAWv+WJaEjv4JiruQVH%252FInO5SW3v42NDx6joTtUk4cyOK%252FTyg5d9A1rHTa5MSPi3rE3KvVRtC1B6dDsaaI%252FEcfjIOmwvLEY0atPiznG8Q'></script>
-<script id="jetpack-comments-js-before">
-window.JetpackComments = {"version":"0.8.3-alpha","styleUrl":"/wp-content/mu-plugins/jetpack-mu-wpcom-plugin/sun/jetpack_vendor/automattic/jetpack-comments/build/comments.css?m=1792508237i\u0026minify=false\u0026ver=48dc7f610d2dd0cd112c-1792508237","requireNameEmail":true,"mustLogIn":false,"site":{"name":"HACKING MATERIALS","iconUrl":""},"manageSubscriptionsUrl":"https://subscribe.wordpress.com/?site=hackingmaterials.com","tracks":{"platform":"simple"},"strings":{"reply":"Reply","commentLabel":"Comment","replyLabel":"Reply","placeholder":"Write a comment...","replyPlaceholder":"Write a reply...","name":"Name","email":"Email","emailHint":"Address never made public","emailHasAccount":"That email belongs to a WordPress.com account. Log in with WordPress.com to use it, or enter a different email.","website":"Website (optional)","intro":"Enter your name and email to comment.","continueAsGuest":"Continue as a guest","postWithoutSaving":"No, thanks. I just want to post a comment","save":"Save","saveDetails":"Save my name, email, and website in this browser for the next time I comment.","close":"Close","manageSubscriptions":"Manage subscription","mustLogIn":"You must be logged in to post a comment.","logIn":"Log in","logInWithWordPress":"Log in with WordPress.com","logOut":"Log out","change":"Change","editProfile":"Edit profile","addYourName":"Add your name","cancel":"Cancel","signInFailed":"We could not sign you in. Please try again.","tooLong":"This comment is too long to post. Shorten it to send it.","signInRateLimited":"Too many sign-in attempts. Please wait a moment and try again."},"assetsUrl":"https://s1.wp.com/wp-content/mu-plugins/jetpack-mu-wpcom-plugin/sun/jetpack_vendor/automattic/jetpack-comments/build/","loaderUrl":"https://s1.wp.com/wp-content/mu-plugins/jetpack-mu-wpcom-plugin/sun/jetpack_vendor/automattic/jetpack-comments/build/editor-loader.js?m=1793810765i&amp;minify=false\u0026ver=6ecd9fb8ff75b3cf2d70","maxLength":65525,"blocks":true,"editorLocale":{"block title\u0004Paragraph":["Paragraph"],"block title\u0004List":["List"],"block title\u0004List Item":["List Item"],"block title\u0004Quote":["Quote"],"block title\u0004Code":["Code"],"block title\u0004Embed":["Embed"],"block title\u0004Image":["Image"]},"editor":{"blockTools":"Block tools","addBlock":"Add block","embedUrl":"https://public-api.wordpress.com/wpcom/v2/sites/36610064/comments/embed","images":true,"imageError":"This image could not be loaded. Check its URL and try again."},"isLoggedIn":false,"avatarUrl":"https://0.gravatar.com/avatar/?s=80\u0026d=identicon\u0026forcedefault=y\u0026r=G","commenter":{"author":"","email":"","url":""},"user":null,"identity":{"blogId":36610064,"canSignIn":true,"connect":{"url":"https://public-api.wordpress.com/connect/?comment_identity=1\u0026blog_id=36610064\u0026challenge=EbMAendFEuWWPoLv83qoKHCTpu7mVP11Rp2ZS4HjPNU\u0026origin=https%3A%2F%2Fhackingmaterials.com\u0026expires=1794006331\u0026signature=6e77b53bdf445df38594d5e9e18632f4b92946e8396a1e424fe64f0c311eb290","expires":1794006331,"challenge":"EbMAendFEuWWPoLv83qoKHCTpu7mVP11Rp2ZS4HjPNU"},"connectUrl":"https://public-api.wordpress.com/wpcom/v2/sites/36610064/comments/identity/connect","emailUrl":"https://public-api.wordpress.com/wpcom/v2/sites/36610064/comments/identity/email","origin":"https://public-api.wordpress.com","codeField":"jetpack_comment_identity_code","passportField":"jetpack_comment_identity_passport","displayCookie":"jetpack_comment_identity_display","cookieHash":"653166773dc88127bd3afe0b6dfe5ea7","cookiePath":"/","cookieDomain":"","defaultAvatar":"https://0.gravatar.com/avatar/?s=80\u0026d=identicon\u0026forcedefault=y\u0026r=G","logoutUrl":"/wp-admin/admin-ajax.php","logoutAction":"jetpack_comments_identity_logout"}};(function(){function n(){Array.prototype.forEach.call(document.forms,function(f){var i;if(f.querySelector(".jetpack-comments")&&!f.querySelector('[name="jetpack_comments_form_nonce"]')){i=document.createElement("input");i.type="hidden";i.name="jetpack_comments_form_nonce";i.value="1d1e02873d";f.appendChild(i);}});}n();document.addEventListener("DOMContentLoaded",n);})();window.addEventListener("load",function(){Array.prototype.forEach.call(document.querySelectorAll(".jetpack-comments"),function(e){if(!/\bis-(mounted|plain)\b/.test(e.className)){e.className+=" is-plain";}});});
-//# sourceURL=jetpack-comments-js-before
-</script>
-<script data-wp-strategy="defer" defer id="jetpack-comments-js" src="../../../../wp-content/mu-plugins/jetpack-mu-wpcom-plugin/sun/jetpack_vendor/automattic/jetpack-comments/build/comments.js@m=1793810765i&amp;minify=false&amp;ver=48dc7f610d2dd0cd112c-1792508237"></script>
-<script id="sharing-js-js-extra">
-var sharing_js_options = {"lang":"en","counts":"1","is_stats_active":"1"};
-//# sourceURL=sharing-js-js-extra
-</script>
-<script crossorigin='anonymous' type='text/javascript'  src='../../../../_static/index.html@%253F-eJx9TcsKwjAQ%252FCGTVSxUD+KnSMymddNkE7IJxb9vqeJBxMPAzDAPmLOyiavjCrGpHNpILGAmkuiqOuo93IjtxxjKFkbtZQe%252Fu9aU1MQFNWeb4pf80%252FOuZmOntwZp%252FLq+NwoI8jDFoUF8bpR41JF4nbvGy6E%252F9eeuW+EXxylMng=='></script>
-<script id="sharing-js-js-after">
-window.WPCOM_sharing_popups = window.WPCOM_sharing_popups || {};
-window.WPCOM_sharing_popups[ "twitter" ] = "menubar=1,resizable=1,width=600,height=350";
-window.WPCOM_sharing_popups = window.WPCOM_sharing_popups || {};
-window.WPCOM_sharing_popups[ "facebook" ] = "menubar=1,resizable=1,width=600,height=400";
-//# sourceURL=sharing-js-js-after
-</script>
-<script id="wp-emoji-settings" type="application/json">
-{"baseUrl":"https://s0.wp.com/wp-content/mu-plugins/wpcom-smileys/twemoji/2/72x72/","ext":".png","svgUrl":"https://s0.wp.com/wp-content/mu-plugins/wpcom-smileys/twemoji/2/svg/","svgExt":".svg","source":{"concatemoji":"/wp-includes/js/wp-emoji-release.min.js?m=1783090810i&ver=7.1.4-alpha-64893"}}
-</script>
-<script type="module">
-/*! This file is auto-generated */
-var e="script#wp-emoji-settings",t=document.querySelector(e);if(!(t instanceof HTMLScriptElement))throw new Error("Element missing: "+e);const r=JSON.parse(t.text),s=(window._wpemojiSettings=r,"wpEmojiSettingsSupports"),o=["flag","emoji"];function i(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(s,JSON.stringify(t))}catch(e){}}function c(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0);const r=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);return t.every((e,t)=>e===r[t])}function p(e,t){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var n=e.getImageData(16,16,1,1);for(let e=0;e<n.data.length;e++)if(0!==n.data[e])return!1;return!0}function u(e,t,n,r){switch(t){case"flag":return n(e,"\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f","\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f")?!1:!n(e,"\ud83c\udde8\ud83c\uddf6","\ud83c\udde8\u200b\ud83c\uddf6")&&!n(e,"\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f","\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f");case"emoji":return!r(e,"\ud83e\udec8")}return!1}function f(e,t,n,r){let a;const s=(a="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):document.createElement("canvas")).getContext("2d",{willReadFrequently:!0}),o=(s.textBaseline="top",s.font="600 32px Arial",{});return e.forEach(e=>{o[e]=t(s,e,n,r)}),o}function a(e){var t=document.createElement("script");t.src=e,t.defer=!0,document.head.appendChild(t)}r.supports={everything:!0,everythingExceptFlag:!0},new Promise(t=>{let n=function(){try{var e=JSON.parse(sessionStorage.getItem(s));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(o),u.toString(),c.toString(),p.toString()].join(",")+"));",r=new Blob([e],{type:"text/javascript"});const a=new Worker(URL.createObjectURL(r),{name:"wpTestEmojiSupports"});return void(a.onmessage=e=>{i(n=e.data),a.terminate(),t(n)})}catch(e){}i(n=f(o,u,c,p))}t(n)}).then(e=>{for(const n in e)r.supports[n]=e[n],r.supports.everything=r.supports.everything&&r.supports[n],"flag"!==n&&(r.supports.everythingExceptFlag=r.supports.everythingExceptFlag&&r.supports[n]);var t;r.supports.everythingExceptFlag=r.supports.everythingExceptFlag&&!r.supports.flag,r.supports.everything||((t=r.source||{}).concatemoji?a(t.concatemoji):t.wpemoji&&t.twemoji&&(a(t.twemoji),a(t.wpemoji)))});
-//# sourceURL=/wp-includes/js/wp-emoji-loader.min.js
-</script>
+
+
+
 	<iframe src='https://widgets.wp.com/likes/master.html?ver=20261106#ver=20261106' scrolling='no' id='likes-master' name='likes-master' style='display:none;'></iframe>
 	<div id='likes-other-gravatars' role="dialog" aria-hidden="true" tabindex="-1"><div class="likes-text"><span>%d</span></div><ul class="wpl-avatars sd-like-gravatars"></ul></div>
-	<script src="https://stats.wp.com/w.js?71" defer></script> <script type="text/javascript">
-_tkq = window._tkq || [];
-_stq = window._stq || [];
-_tkq.push(['storeContext', {'blog_id':'36610064','blog_tz':'-8','user_lang':'en','blog_lang':'en','user_id':'0'}]);
-		// Prevent sending pageview tracking from WP-Admin pages.
-		_stq.push(['view', {'blog':'36610064','v':'wpcom','tz':'-8','user_id':'0','post':'345','subd':'hackingmaterials'}]);
-		_stq.push(['extra', {'crypt':'UE5XaGUuOTlwaD85flAmcm1mcmZsaDhkV11YdWtpP0NsWnVkPS9sL0ViLndld3BuVT01Uj14Ti1yYTBnX3xuYUQ3Qz1oblZbVHV3MTZoVXFwTTVDK2wuPT1KWzJNV19iQk9bTmF0PUUlUlYzbW1nYyxHTnlKQiUsT0hKb2tYK09aZkN6LzJmYVtxMGpoLT9rJnJRJXg4S3dLRnBlUWRkdkNtLWsvJlNRb2t+dmFzd1B3P0ZGWUZOJXBqcnxtVkp3Z0s4YSVoU3xlNnFdeCUvSlhjLlEtYTR8ZTZMZWhsRG4uZ3Iyc1FmNFgxdFBWUGRqMnQzSUxwWkFvUTVfQj9MSFdYJmsmV3dHZ3hxLEJaaXplZW1oM058Wnpfdi9lL0MtLmpzd2VdX2RjUFdiYjZyRj94MC1xN1oua1REa2RHaz9ZL1syLzZTTGNkRWtnSmkwME1iRGU5fkJKTUR0Z2ZfZ0RBX2FyWnlYdGVORDhoM1MyR2IwTGxTbEcxdzlHW35COThsVVJqP1EtUm9xdDFsWEoxbzg5R35d'}]);
-_stq.push([ 'clickTrackerInit', '36610064', '345' ]);
-</script>
-<noscript><img src="https://pixel.wp.com/b.gif?v=noscript" style="height:1px;width:1px;overflow:hidden;position:absolute;bottom:1px;" alt="" /></noscript>
+	 
+
 <meta id="bilmur" property="bilmur:data" content="" data-provider="wordpress.com" data-service="simple" data-site-tz="America/Los_Angeles" data-custom-props="{&quot;enq_jquery&quot;:&quot;1&quot;,&quot;logged_in&quot;:&quot;0&quot;,&quot;wptheme&quot;:&quot;pub\/twentyfourteen&quot;,&quot;wptheme_is_block&quot;:&quot;0&quot;}"   >
-		<script defer src="../../../../wp-content/js/bilmur.min.js@i=19&amp;m=202645"></script> 	</body>
+		 	</body>
 </html>
